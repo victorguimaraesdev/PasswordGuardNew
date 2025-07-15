@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ModalForm } from "./mofalForm";
 
 const Overlay = styled.div`
   display: flex;
@@ -37,15 +36,16 @@ const CloseButton = styled.button`
 
 interface ModalProps {
     onClose: () => void;
+    children: React.ReactNode
 }
 
-export const Modal: React.FC<ModalProps> = ({onClose}) => {
+export const Modal: React.FC<ModalProps> = (modalProps) => {
 
     return (
         <Overlay>
             <ContainerModal>
-                <CloseButton onClick={onClose}>X</CloseButton>
-                <ModalForm/>
+                <CloseButton onClick={modalProps.onClose}>X</CloseButton>
+                {modalProps.children}
             </ContainerModal>
         </Overlay>
     )
