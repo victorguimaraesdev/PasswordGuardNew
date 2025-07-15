@@ -6,10 +6,9 @@ import { CardLogin } from "./cardLogin";
 const ContainerMaster = styled.div`
     display: flex;
     padding: 20px;
-    /* justify-content: center; */
-    /* align-items: center; */
     width: 100%;
     height: 100vh;
+    gap: 10px;
 `
 const ContainerAddLogin = styled.div`
     display: flex;

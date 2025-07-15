@@ -61,8 +61,6 @@ export const ModalForm = () => {
             ))} 
             <PasswordButton>Gerar Senha</PasswordButton>
             <RegisterButton>Registrar</RegisterButton>
-
-
         </ContainerForm>
     )
 }
