@@ -10,7 +10,7 @@ const ContainerMaster = styled.div`
     background-color: var(--primary);
     border-right: 2px solid white;
 `
-const ContainerInfo = styled.div`
+const ContainerOption = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,17 +20,20 @@ const ContainerInfo = styled.div`
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
 `
-const IconInfo = styled.img`
+const IconOption = styled.img`
     width: 30px;
     height: auto;
+`
+const TextOption = styled.h3`
+    font-size: 20px;
 `
 export const SideBar = () => {
     return (
         <ContainerMaster>
-            <ContainerInfo>
-                <IconInfo src="../../assets/icon/padlock.png"/>
-                <h3>Logins</h3>
-            </ContainerInfo>
+            <ContainerOption>
+                <IconOption src="../../assets/icon/padlock.png"/>
+                <TextOption>Login</TextOption>
+            </ContainerOption>
         </ContainerMaster>
     )
 }
