@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { Modal } from "./modal";
 import { useState } from "react";
+import { CardLogin } from "./cardLogin";
 
 const ContainerMaster = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 20px;
+    /* justify-content: center; */
+    /* align-items: center; */
     width: 100%;
     height: 100vh;
 `
@@ -32,6 +34,7 @@ export const Dashboard = () => {
     const [showModal, setShowModal] = useState(false);
     return (
     <ContainerMaster>
+        <CardLogin></CardLogin>
         <ContainerAddLogin onClick={() =>setShowModal(true)}>
             <IconAdd src="../../assets/icon/add.png"></IconAdd>
             <TextAdd>Novo Login</TextAdd>
