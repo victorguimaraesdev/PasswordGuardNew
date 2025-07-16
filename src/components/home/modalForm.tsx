@@ -38,7 +38,8 @@ const PasswordButton = styled.button`
     border: none;
     border-radius: 5px;
     cursor: pointer;
-`
+    margin-top: 10px;
+    `
 const RegisterButton = styled.button`
     width: 150px;
     height: 40px;
