@@ -43,6 +43,7 @@ const RegisterButton = styled.button`
 `
 const FormRegister = styled.form`
     width: 100%;
+    height: 100%;
 `
 export const ModalFormLoginRegister = () => {
 
@@ -61,8 +62,8 @@ export const ModalFormLoginRegister = () => {
     }
 
    return (
-    <ContainerForm>
-        <FormRegister onSubmit={handleSubmit}> 
+    <FormRegister onSubmit={handleSubmit}> 
+        <ContainerForm>
             <SubContainerForm>
                 <TitleForm> Nome </TitleForm>
                 <InputForm type="text" value={name} onChange={(e) => setName(e.target.value)}/>
@@ -80,7 +81,7 @@ export const ModalFormLoginRegister = () => {
                 <InputForm type="password" value={passowodConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
             </SubContainerForm>
             <RegisterButton type="submit"> Registrar </RegisterButton>
-        </FormRegister>
-    </ContainerForm>
+        </ContainerForm>
+    </FormRegister>
    )
 }
