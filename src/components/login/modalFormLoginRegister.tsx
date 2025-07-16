@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const ContainerForm = styled.div `
@@ -40,26 +41,46 @@ const RegisterButton = styled.button`
     cursor: pointer;
     box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
 `
-export const ModalFormLoginRegiste = () => {
+const FormRegister = styled.form`
+    width: 100%;
+`
+export const ModalFormLoginRegister = () => {
+
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [passowodConfirm, setPasswordConfirm] = useState('')
+
+    const handleSubmit = () => {
+        if (password != passowodConfirm) {
+            alert('A senha e o confirmar senha precisam ser iguais.')
+        }
+        else {
+            return;
+        }
+    }
+
    return (
     <ContainerForm>
-        <SubContainerForm>
-            <TitleForm> Login </TitleForm>
-            <InputForm></InputForm>
-        </SubContainerForm>
-        <SubContainerForm>
-            <TitleForm> Email </TitleForm>
-            <InputForm></InputForm>
-        </SubContainerForm>
-        <SubContainerForm>
-            <TitleForm> Senha </TitleForm>
-            <InputForm></InputForm>
-        </SubContainerForm>
-        <SubContainerForm>
-            <TitleForm> Confirmar Senha </TitleForm>
-            <InputForm></InputForm>
-        </SubContainerForm>
-        <RegisterButton> Registrar </RegisterButton>
+        <FormRegister onSubmit={handleSubmit}> 
+            <SubContainerForm>
+                <TitleForm> Nome </TitleForm>
+                <InputForm type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+            </SubContainerForm>
+            <SubContainerForm>
+                <TitleForm> Email </TitleForm>
+                <InputForm type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            </SubContainerForm>
+            <SubContainerForm>
+                <TitleForm> Senha </TitleForm>
+                <InputForm type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            </SubContainerForm>
+            <SubContainerForm>
+                <TitleForm> Confirmar Senha </TitleForm>
+                <InputForm type="password" value={passowodConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
+            </SubContainerForm>
+            <RegisterButton type="submit"> Registrar </RegisterButton>
+        </FormRegister>
     </ContainerForm>
    )
 }

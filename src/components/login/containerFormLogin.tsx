@@ -78,6 +78,7 @@ export const ContainerFormLogin = () => {
     const navigate = useNavigate();
 
     const handleSubmit = () => {
+
         if (email === 'victor@test.com' && password === '123'){
             navigate('/home')
         }
@@ -90,18 +91,18 @@ export const ContainerFormLogin = () => {
         <ContainerFormLoginMaster>
            <ImgLogo src="../../assets/logo/logo.png"></ImgLogo>
            <FormSubmite onSubmit={handleSubmit}>
-           <SubContainerLogin>
+            <SubContainerLogin>
                 <Title>Email</Title>
                 <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-           </SubContainerLogin>
-           <SubContainerLogin>
+            </SubContainerLogin>
+            <SubContainerLogin>
                 <Title>Senha</Title>
                 <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-           </SubContainerLogin>
-           <SubContainerButton>
-             <LoginButton type="submit">Login</LoginButton>
-             <Register onClick={() => setShowModalLoginRegister(true)}>Criar conta</Register>
-           </SubContainerButton>
+            </SubContainerLogin>
+            <SubContainerButton>
+                <LoginButton type="submit">Login</LoginButton>
+                <Register onClick={() => setShowModalLoginRegister(true)}>Criar conta</Register>
+            </SubContainerButton>
            </FormSubmite>
            {showModalLoginRegister && <ModalLoginRegister onClose={() => setShowModalLoginRegister(false)}/>}
         </ContainerFormLoginMaster>

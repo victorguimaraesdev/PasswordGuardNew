@@ -1,5 +1,5 @@
 import { Modal } from "../home/modal"
-import { ModalFormLoginRegiste } from "./modalFormLoginRegister"
+import { ModalFormLoginRegister } from "./modalFormLoginRegister"
 
 
 
@@ -10,7 +10,7 @@ interface ModalLoginRegisterProps {
 export const ModalLoginRegister: React.FC<ModalLoginRegisterProps> = ({onClose}) => {
     return (
     <Modal onClose={onClose}>
-        <ModalFormLoginRegiste/>
+        <ModalFormLoginRegister/>
     </Modal>
     )
 }
