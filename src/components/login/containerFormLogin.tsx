@@ -1,4 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { ModalLoginRegister } from "./modalLoginRegister";
 
 const ContainerFormLoginMaster = styled.div`
     display: flex;
@@ -8,21 +10,80 @@ const ContainerFormLoginMaster = styled.div`
     padding: 20px;
     width: 100%;
     height: 100%;
+    gap: 10px;
 `
 const ImgLogo = styled.img`
     width: 60px;
     height: auto;
 `
-const TextLogo = styled.h1 `
+const SubContainerLogin = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70px;
+    gap: 5px;
+`
+const Title = styled.h3`
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
     font-size: 25px;
     color: var(--primary);
+` 
+const Input = styled.input`
+    padding: 5px;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: rgba(209, 207, 207, 0.9);
+    text-align: center;
+    box-shadow: none;
+    border: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 `
+const SubContainerButton = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 80px;
+    gap: 5px;
+`
+const Register = styled.h3`
+    font-size: 15px;
+    color: var(--primary);
+    cursor: pointer;
+`
+const LoginButton = styled.button`
+    width: 150px;
+    height: 40px;
+    background-color: var(--primary);
+    color: var(--secondary);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
+`
+
 export const ContainerFormLogin = () => {
+    const [showModalLoginRegister, setShowModalLoginRegister] = useState(false)
     return (
         <ContainerFormLoginMaster>
            <ImgLogo src="../../assets/logo/logo.png"></ImgLogo>
-           <TextLogo>PASSWORD GUARD</TextLogo>
+           <SubContainerLogin>
+                <Title>Login</Title>
+                <Input></Input>
+           </SubContainerLogin>
+           <SubContainerLogin>
+                <Title>Senha</Title>
+                <Input></Input>
+           </SubContainerLogin>
+           <SubContainerButton>
+             <LoginButton>Login</LoginButton>
+             <Register onClick={() => setShowModalLoginRegister(true)}>Criar conta</Register>
+           </SubContainerButton>
+           {showModalLoginRegister && <ModalLoginRegister onClose={() => setShowModalLoginRegister(false)}/>}
         </ContainerFormLoginMaster>
     )
 }
