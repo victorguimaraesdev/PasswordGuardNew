@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { ModalLoginRegister } from "./modalLoginRegister";
+import { useNavigate } from "react-router-dom";
 
 const ContainerFormLoginMaster = styled.div`
     display: flex;
@@ -65,24 +66,43 @@ const LoginButton = styled.button`
     cursor: pointer;
     box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
 `
+const FormSubmite = styled.form`
+    width: 100%;
+`
 
 export const ContainerFormLogin = () => {
     const [showModalLoginRegister, setShowModalLoginRegister] = useState(false)
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const navigate = useNavigate();
+
+    const handleSubmit = () => {
+        if (email === 'victor@test.com' && password === '123'){
+            navigate('/home')
+        }
+        else {
+            alert('Usuario invalido')
+        }
+    }
+
     return (
         <ContainerFormLoginMaster>
            <ImgLogo src="../../assets/logo/logo.png"></ImgLogo>
+           <FormSubmite onSubmit={handleSubmit}>
            <SubContainerLogin>
-                <Title>Login</Title>
-                <Input></Input>
+                <Title>Email</Title>
+                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
            </SubContainerLogin>
            <SubContainerLogin>
                 <Title>Senha</Title>
-                <Input></Input>
+                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
            </SubContainerLogin>
            <SubContainerButton>
-             <LoginButton>Login</LoginButton>
+             <LoginButton type="submit">Login</LoginButton>
              <Register onClick={() => setShowModalLoginRegister(true)}>Criar conta</Register>
            </SubContainerButton>
+           </FormSubmite>
            {showModalLoginRegister && <ModalLoginRegister onClose={() => setShowModalLoginRegister(false)}/>}
         </ContainerFormLoginMaster>
     )
