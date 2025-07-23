@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { ModalLoginRegister } from "./modalLoginRegister";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ContainerFormLoginMaster = styled.div`
     display: flex;
@@ -77,15 +78,27 @@ export const ContainerFormLogin = () => {
 
     const navigate = useNavigate();
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
-        if (email === 'v@1' && password === '123'){
+        try {
+            const response = await axios.post('http://localhost:8081/users/log', {
+                email,
+                password
+            })
+            const { Token } = response.data;
+
+            localStorage.setItem('Token', Token);
+            alert('Login realizado com sucesso')
             navigate('/home')
+
         }
-        else {
-            alert('Usuario invalido')
+        catch (err: any) {
+            console.log(err);
+            alert(err.response?.data?.message || 'Erro ao fazer login')
         }
     }
+    
 
     return (
         <ContainerFormLoginMaster>

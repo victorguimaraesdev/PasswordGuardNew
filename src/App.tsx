@@ -2,6 +2,7 @@ import {GlobalStyle} from "../global/global.style"
 import { Home } from "./pages/home"
 import { Login } from "./pages/login"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import PrivateRouter from "./utils/privateRoute"
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login/>}/>
-          <Route path="home" element={<Home/>}/>
+          <Route path="home" element={ <PrivateRouter> <Home /> </PrivateRouter>}/>
         </Routes>
       </Router> 
     </>
