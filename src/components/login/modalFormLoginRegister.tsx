@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -52,12 +53,26 @@ export const ModalFormLoginRegister = () => {
     const [password, setPassword] = useState('')
     const [passowodConfirm, setPasswordConfirm] = useState('')
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (password != passowodConfirm) {
-            alert('A senha e o confirmar senha precisam ser iguais.')
+           return alert('A senha e o confirmar senha precisam ser iguais.')
         }
-        else {
-            return;
+        
+        if (!name || !email || !password) {
+            return alert ('Todos os campos devem ser prenchidos')
+        }
+
+        try {
+            const response = await axios.post('http://localhost:8081/users/reg', {
+                name,
+                email,
+                password
+            })
+            alert (response.data.message)
+        }
+        catch (err: any) {
+            console.log(err)
+            alert(err.response?.data?.message || 'Erro ao se registrar')
         }
     }
 
