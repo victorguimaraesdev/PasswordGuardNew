@@ -53,10 +53,10 @@ const FormRegister = styled.form`
 `
 interface ModalFormLoginRegisterProps {
     onClose: () => void;
+    setMessage: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-export const ModalFormLoginRegister: React.FC<ModalFormLoginRegisterProps> = ({onClose}) => {
-
+export const ModalFormLoginRegister: React.FC<ModalFormLoginRegisterProps> = ({onClose, setMessage}) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -79,14 +79,13 @@ export const ModalFormLoginRegister: React.FC<ModalFormLoginRegisterProps> = ({o
                 email,
                 password
             })
-            onClose();
-            console.log(response.data.message)
-            
+            setMessage(response.data.message)  
         }
         catch (err: any) {
-            console.log(err)
+            console.log(err);
             alert(err.response?.data?.message || 'Erro ao se registrar')
         }
+        onClose(); 
     }
 
    return (

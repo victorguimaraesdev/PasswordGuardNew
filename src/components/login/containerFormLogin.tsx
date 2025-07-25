@@ -76,6 +76,7 @@ export const ContainerFormLogin = () => {
     const [showModalLoginRegister, setShowModalLoginRegister] = useState(false)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState<string | null> (null)
 
     const navigate = useNavigate();
 
@@ -117,7 +118,8 @@ export const ContainerFormLogin = () => {
                 <Register onClick={() => setShowModalLoginRegister(true)}>Criar conta</Register>
             </SubContainerButton>
            </FormSubmite>
-           {showModalLoginRegister && <ModalLoginRegister onClose={() => setShowModalLoginRegister(false)}/>}
+           {message && <p>{message}</p>}
+           {showModalLoginRegister && <ModalLoginRegister onClose={() => setShowModalLoginRegister(false)} setMessage={setMessage}/>}
         </ContainerFormLoginMaster>
     )
 }

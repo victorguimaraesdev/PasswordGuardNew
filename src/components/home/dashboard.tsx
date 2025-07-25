@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { ModalRegister } from "./modalRegister";
-import { ModalCard } from "./madalCard";
+import { ModalCard } from "./modalCard";
 
 const ContainerMaster = styled.div`
     display: flex;
