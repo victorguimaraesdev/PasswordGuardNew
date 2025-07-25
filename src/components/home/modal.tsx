@@ -18,8 +18,8 @@ const ContainerModal = styled.div`
   position: relative;
   width: 400px;
   height: 400px;
-  background-color: var(--primary);
-  border-radius: 8px;
+  background-color: rgba(78, 148, 228, 0.8);
+  border-radius: 20px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
 `;
 

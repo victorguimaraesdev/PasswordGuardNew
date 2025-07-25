@@ -21,21 +21,26 @@ const SubContainerForm = styled.div`
 const TitleForm = styled.h3`
     font-size: 20px;
     color: var(--secondary);
+    margin-bottom: 10px;
 `
 const InputForm = styled.input`
     padding: 5px;
     width: 100%;
     height: 30px;
-    border-radius: 5px;
-    background-color: rgba(247, 246, 246, 0.9);
+    background-color: transparent;
     box-shadow: none;
     border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    &::placeholder {
+        color: white;
+    }
 `
 const RegisterButton = styled.button`
     width: 150px;
     height: 40px;
     background-color: var(--secondary);
-    color: var(--supp2);
+    color: var(--primary);
     border: none;
     border-radius: 5px;
     margin-top: 15px;
@@ -46,15 +51,21 @@ const FormRegister = styled.form`
     width: 100%;
     height: 100%;
 `
-export const ModalFormLoginRegister = () => {
+interface ModalFormLoginRegisterProps {
+    onClose: () => void;
+}
+
+export const ModalFormLoginRegister: React.FC<ModalFormLoginRegisterProps> = ({onClose}) => {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [passowodConfirm, setPasswordConfirm] = useState('')
+    const [passowordConfirm, setPasswordConfirm] = useState('')
 
-    const handleSubmit = async () => {
-        if (password != passowodConfirm) {
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (password != passowordConfirm) {
            return alert('A senha e o confirmar senha precisam ser iguais.')
         }
         
@@ -68,7 +79,9 @@ export const ModalFormLoginRegister = () => {
                 email,
                 password
             })
-            alert (response.data.message)
+            onClose();
+            console.log(response.data.message)
+            
         }
         catch (err: any) {
             console.log(err)
@@ -79,21 +92,18 @@ export const ModalFormLoginRegister = () => {
    return (
     <FormRegister onSubmit={handleSubmit}> 
         <ContainerForm>
+            <TitleForm>Crie uma nova conta</TitleForm>
             <SubContainerForm>
-                <TitleForm> Nome </TitleForm>
-                <InputForm type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                <InputForm type="text" placeholder="Nome:" value={name} onChange={(e) => setName(e.target.value)}/>
             </SubContainerForm>
             <SubContainerForm>
-                <TitleForm> Email </TitleForm>
-                <InputForm type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <InputForm type="email" placeholder="E-mail:" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </SubContainerForm>
             <SubContainerForm>
-                <TitleForm> Senha </TitleForm>
-                <InputForm type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <InputForm type="password" placeholder="Senha:" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </SubContainerForm>
             <SubContainerForm>
-                <TitleForm> Confirmar Senha </TitleForm>
-                <InputForm type="password" value={passowodConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
+                <InputForm type="password" placeholder="Confirmar Senha" value={passowordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
             </SubContainerForm>
             <RegisterButton type="submit"> Registrar </RegisterButton>
         </ContainerForm>

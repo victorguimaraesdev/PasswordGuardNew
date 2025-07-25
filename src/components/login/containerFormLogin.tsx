@@ -90,7 +90,6 @@ export const ContainerFormLogin = () => {
             const { Token } = response.data;
 
             localStorage.setItem('Token', Token);
-            alert('Login realizado com sucesso')
             navigate('/home')
 
         }

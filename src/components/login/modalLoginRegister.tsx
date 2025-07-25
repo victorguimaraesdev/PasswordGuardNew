@@ -10,7 +10,7 @@ interface ModalLoginRegisterProps {
 export const ModalLoginRegister: React.FC<ModalLoginRegisterProps> = ({onClose}) => {
     return (
     <Modal onClose={onClose}>
-        <ModalFormLoginRegister/>
+        <ModalFormLoginRegister onClose={onClose} />
     </Modal>
     )
 }
