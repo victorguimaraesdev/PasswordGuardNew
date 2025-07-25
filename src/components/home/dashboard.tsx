@@ -9,7 +9,7 @@ const ContainerMaster = styled.div`
     width: 100%;
     height: 100vh;
     gap: 10px;
-    background-color: #f5f5f5;
+    background-color: #fcfcfc;
 `
 const ContainerAddLogin = styled.div`
     display: flex;

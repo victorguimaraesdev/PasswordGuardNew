@@ -34,7 +34,7 @@ const Title = styled.h3`
 ` 
 const Input = styled.input`
     padding: 5px;
-    width: 100%;
+    width: 70%;
     height: 30px;
     border-radius: 5px;
     background-color: rgba(209, 207, 207, 0.9);
@@ -48,6 +48,7 @@ const SubContainerButton = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 20px;
     width: 100%;
     height: 80px;
     gap: 5px;
