@@ -88,9 +88,9 @@ export const ContainerFormLogin = () => {
                 email,
                 password
             })
-            const { Token } = response.data;
+            const { token } = response.data;
 
-            localStorage.setItem('Token', Token);
+            localStorage.setItem('token', token);
             navigate('/home')
 
         }
