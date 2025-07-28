@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { formLogin } from "../../utils/modalFormLogin";
+import { formLogin } from "../../utils/infoFormLogin";
 
 const ContainerForm = styled.div `
     display:flex;

@@ -27,21 +27,20 @@ const SubContainerLogin = styled.div`
     height: 70px;
     gap: 5px;
 `
-const Title = styled.h3`
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
-    font-size: 25px;
-    color: var(--primary);
-` 
 const Input = styled.input`
     padding: 5px;
-    width: 70%;
+    width: 50%;
     height: 30px;
-    border-radius: 5px;
-    background-color: rgba(209, 207, 207, 0.9);
-    text-align: center;
-    box-shadow: none;
     border: none;
+    color: var(--primary);
+    font-size: 18px;
+    border-bottom: 2px solid var(--primary);
+    box-shadow: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     &::placeholder {
+        color: var(--primary);
+        font-size: 18px;
+    }
 `
 const SubContainerButton = styled.div`
     display: flex;
@@ -106,12 +105,10 @@ export const ContainerFormLogin = () => {
            <ImgLogo src="../../assets/logo/logo.png"></ImgLogo>
            <FormSubmite onSubmit={handleSubmit}>
             <SubContainerLogin>
-                <Title>Email</Title>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <Input placeholder="E-mail:" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </SubContainerLogin>
             <SubContainerLogin>
-                <Title>Senha</Title>
-                <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <Input placeholder="Senha:" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </SubContainerLogin>
             <SubContainerButton>
                 <LoginButton type="submit">Login</LoginButton>

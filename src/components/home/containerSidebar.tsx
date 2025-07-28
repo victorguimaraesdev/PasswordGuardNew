@@ -31,13 +31,12 @@ const ContainerOption = styled.div`
 const SubContainerOption = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 35px;
-    width: 200px;
+    width: 150px;
     color: var(--secondary);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
-    gap: 8px;
+    gap: 15px;
 `
 const IconOption = styled.img`
     width: 30px;

@@ -1,13 +1,11 @@
 import { ContainerCentral } from "../components/home/containerCentral"
-import { Dashboard } from "../components/home/dashboard"
-// import { Header } from "../components/home/header"
-import { SideBar } from "../components/home/sidebar"
+import { Dashboard } from "../components/home/containerDashboard"
+import { SideBar } from "../components/home/containerSidebar"
 
 
 export const Home = () => {
     return(
         <>
-        {/* <Header/> */}
         <ContainerCentral>
             <SideBar/>
             <Dashboard/>
