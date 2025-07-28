@@ -22,25 +22,30 @@ const SubContainerLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     height: 70px;
     gap: 5px;
 `
 const Input = styled.input`
+    display: flex;  
     padding: 5px;
     width: 50%;
     height: 30px;
     border: none;
     color: var(--primary);
-    font-size: 18px;
-    border-bottom: 2px solid var(--primary);
+    font-size: 15px;
+    border-bottom: 1px solid var(--primary);
     box-shadow: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
      &::placeholder {
         color: var(--primary);
-        font-size: 18px;
+        font-size: 15px;
     }
+`
+const IconInput  = styled.img`
+    width: 20px;
+    height: auto;
 `
 const SubContainerButton = styled.div`
     display: flex;
@@ -105,9 +110,11 @@ export const ContainerFormLogin = () => {
            <ImgLogo src="../../assets/logo/logo.png"></ImgLogo>
            <FormSubmite onSubmit={handleSubmit}>
             <SubContainerLogin>
+                <IconInput src="../../assets/icon/email.png"></IconInput>
                 <Input placeholder="E-mail:" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </SubContainerLogin>
             <SubContainerLogin>
+                <IconInput src="../../assets/icon/password.png"></IconInput>
                 <Input placeholder="Senha:" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </SubContainerLogin>
             <SubContainerButton>
