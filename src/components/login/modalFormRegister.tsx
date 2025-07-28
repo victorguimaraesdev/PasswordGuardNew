@@ -30,7 +30,7 @@ const InputForm = styled.input`
     background-color: transparent;
     box-shadow: none;
     border: none;
-    border-bottom: 2px solid white;
+    border-bottom: 1px solid white;
     color: white;
     &::placeholder {
         color: white;
@@ -102,7 +102,7 @@ export const ModalFormLoginRegister: React.FC<ModalFormLoginRegisterProps> = ({o
                 <InputForm type="password" placeholder="Senha:" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </SubContainerForm>
             <SubContainerForm>
-                <InputForm type="password" placeholder="Confirmar Senha" value={passowordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
+                <InputForm type="password" placeholder="Confirmar Senha:" value={passowordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>
             </SubContainerForm>
             <RegisterButton type="submit"> Registrar </RegisterButton>
         </ContainerForm>
