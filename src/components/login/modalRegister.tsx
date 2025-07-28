@@ -1,5 +1,5 @@
-import { Modal } from "../home/modal"
-import { ModalFormLoginRegister } from "./modalFormLoginRegister"
+import { Modal } from "../../utils/modal"
+import { ModalFormLoginRegister } from "./modalFormRegister"
 
 
 

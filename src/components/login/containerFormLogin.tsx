@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { ModalLoginRegister } from "./modalLoginRegister";
+import { ModalLoginRegister } from "./modalRegister";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 

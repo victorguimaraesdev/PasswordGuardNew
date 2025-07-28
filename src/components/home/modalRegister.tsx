@@ -1,4 +1,4 @@
-import { Modal } from "./modal"
+import { Modal } from "../../utils/modal"
 import { ModalForm } from "./modalForm"
 
 interface ModalRegisterProps{
