@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalRegister } from "./modalRegister";
 import { ModalCard } from "./modalCard";
+import axios from "axios";
 
 const ContainerMaster = styled.div`
     display: flex;
@@ -61,20 +62,60 @@ const Url = styled.img `
 export const Dashboard = () => {
     const [showModal, setShowModal] = useState(false);
     const [showModalCard, setShowModalCard] = useState(false);
+    const [registros, setRegistros] = useState<any[]>([]);
+    const [newReq, setNewReq] = useState(false)
+
+    useEffect(()=> {
+        getRegisters();
+    },[])
+
+    useEffect(()=> {
+        if (newReq) {
+            getRegisters();
+            setNewReq(false);
+        }
+        console.log(registros)
+    },[registros])
+
+    const getRegisters = async () => {
+        const token = localStorage.getItem('token')
+
+        try {
+            const response = await axios.get('http://localhost:8081/registers/all', {
+                headers: {
+                    Authorization:  `Bearer ${token}`
+                }
+            })
+            setRegistros(response.data)
+            setNewReq(true);
+            console.log(registros)
+        }
+        catch (err : any) {
+            console.log(err);
+            alert(err.response?.data?.message || 'Erro ao pegar todas as informações')
+        }
+    }
+    
     return (
     <ContainerMaster>
-        <ContainerCard onClick={() => setShowModalCard(true)}>
-            <Url src="https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"></Url>
-            <ContainerTitle>
-                <TitleCard>victor@exemplo.com</TitleCard>
-            </ContainerTitle>
-        </ContainerCard>
-        <ContainerAddLogin onClick={() =>setShowModal(true)}>
-            <IconAdd src="../../assets/icon/add.png"></IconAdd>
+        
+        {registros.map((registros) => (
+            <ContainerCard key={registros.id} onClick={() => setShowModalCard(true)}>
+                <Url src={registros.iconUrl || "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"}/>
+                <ContainerTitle>
+                    <TitleCard>{registros.dominio}</TitleCard>
+                </ContainerTitle>
+            </ContainerCard>
+        ))}
+
+        <ContainerAddLogin onClick={() => setShowModal(true)}>
+             <IconAdd src="../../assets/icon/add.png" />
             <TextAdd>Novo Login</TextAdd>
         </ContainerAddLogin>
-        {showModal && <ModalRegister onClose={()=> setShowModal(false)} />}
+
+        {showModal && <ModalRegister onClose={() => setShowModal(false)} />}
         {showModalCard && <ModalCard onClose={() => setShowModalCard(false)} />}
+
     </ContainerMaster>
     )
 }
