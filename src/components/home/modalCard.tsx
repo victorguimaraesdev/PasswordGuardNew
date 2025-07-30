@@ -20,10 +20,6 @@ const SubContainerForm = styled.div`
     height: 70px;
     gap: 5px;
 `
-const TitleForm = styled.h3`
-    font-size: 20px;
-    color: var(--secondary);
-`
 const Login = styled.h3`
      font-size: 20px;
     color: var(--secondary);
@@ -32,21 +28,23 @@ const Password = styled.h3`
      font-size: 20px;
     color: var(--secondary);
 `
+const ImgLogin = styled.img`
+    width: 60px;
+    height: auto;
+`
 
 interface ModalRegisterProps{
      onClose: () => void
+     register: any
 }
-export const ModalCard: React.FC<ModalRegisterProps> = ({onClose} ) => {
+export const ModalCard: React.FC<ModalRegisterProps> = ({onClose, register} ) => {
     return (
        <Modal onClose={onClose}>
           <ContainerForm>
+               <ImgLogin src="assets/icon/login.png" />
                <SubContainerForm>
-                    <TitleForm>Login</TitleForm>
-                    <Login>victor@exemplo</Login>
-               </SubContainerForm>
-               <SubContainerForm>
-                    <TitleForm>Password</TitleForm>
-                    <Password>123456131</Password>
+                    <Login>Login: {register.email}</Login>
+                     <Password>Passoword: {register.password}</Password>
                </SubContainerForm>
           </ContainerForm>
        </Modal>

@@ -6,11 +6,14 @@ import axios from "axios";
 
 const ContainerMaster = styled.div`
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 20px;
     width: 100%;
     height: 100vh;
     gap: 10px;
     background-color: #fcfcfc;
+    overflow-y: auto;
 `
 const ContainerAddLogin = styled.div`
     display: flex;
@@ -63,19 +66,15 @@ export const Dashboard = () => {
     const [showModal, setShowModal] = useState(false);
     const [showModalCard, setShowModalCard] = useState(false);
     const [registros, setRegistros] = useState<any[]>([]);
-    const [newReq, setNewReq] = useState(false)
+    const [selectedRegister, setSelectedRegister] = useState<any | null>(null);
+    const [checkReq, setCheckReq] = useState(true);
 
     useEffect(()=> {
-        getRegisters();
-    },[])
-
-    useEffect(()=> {
-        if (newReq) {
+        if (checkReq) {
             getRegisters();
-            setNewReq(false);
+            setCheckReq(false);
         }
-        console.log(registros)
-    },[registros])
+    },[checkReq])
 
     const getRegisters = async () => {
         const token = localStorage.getItem('token')
@@ -87,7 +86,7 @@ export const Dashboard = () => {
                 }
             })
             setRegistros(response.data)
-            setNewReq(true);
+            setCheckReq(true)
             console.log(registros)
         }
         catch (err : any) {
@@ -100,7 +99,10 @@ export const Dashboard = () => {
     <ContainerMaster>
         
         {registros.map((registros) => (
-            <ContainerCard key={registros.id} onClick={() => setShowModalCard(true)}>
+            <ContainerCard key={registros.id} onClick={() => {
+                setShowModalCard(true)
+                setSelectedRegister(registros);
+             }}>
                 <Url src={registros.iconUrl || "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"}/>
                 <ContainerTitle>
                     <TitleCard>{registros.dominio}</TitleCard>
@@ -114,7 +116,10 @@ export const Dashboard = () => {
         </ContainerAddLogin>
 
         {showModal && <ModalRegister onClose={() => setShowModal(false)} />}
-        {showModalCard && <ModalCard onClose={() => setShowModalCard(false)} />}
+        {showModalCard && selectedRegister && (
+            <ModalCard onClose={() => setShowModalCard(false)} 
+            register={selectedRegister} />
+    )}
 
     </ContainerMaster>
     )
