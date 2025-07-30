@@ -63,19 +63,11 @@ export const Dashboard = () => {
     const [showModal, setShowModal] = useState(false);
     const [showModalCard, setShowModalCard] = useState(false);
     const [registros, setRegistros] = useState<any[]>([]);
-    const [newReq, setNewReq] = useState(false)
 
     useEffect(()=> {
         getRegisters();
     },[])
 
-    useEffect(()=> {
-        if (newReq) {
-            getRegisters();
-            setNewReq(false);
-        }
-        console.log(registros)
-    },[registros])
 
     const getRegisters = async () => {
         const token = localStorage.getItem('token')
@@ -87,7 +79,6 @@ export const Dashboard = () => {
                 }
             })
             setRegistros(response.data)
-            setNewReq(true);
             console.log(registros)
         }
         catch (err : any) {
