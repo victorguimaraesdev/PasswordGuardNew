@@ -51,7 +51,12 @@ const FormRegister = styled.form`
     width: 100%;
     height: 100%;
 `
-export const ModalForm = () => {
+
+interface ModalFormProps {
+    onRegisterSuccess: () => void
+}
+
+export const ModalForm: React.FC<ModalFormProps> = ({ onRegisterSuccess }) => {
     const [dominio, setDominio] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
@@ -82,6 +87,7 @@ export const ModalForm = () => {
         })
 
             console.log(response)
+            onRegisterSuccess();
         }
         catch(err : any) {
                 console.log(err)

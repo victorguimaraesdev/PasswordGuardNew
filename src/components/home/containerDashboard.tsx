@@ -14,6 +14,7 @@ const ContainerMaster = styled.div`
     gap: 10px;
     background-color: #fcfcfc;
     overflow-y: auto;
+    
 `
 const ContainerAddLogin = styled.div`
     display: flex;
@@ -42,14 +43,20 @@ const ContainerCard = styled.div`
     box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 `
+const Trash = styled.img`
+    width: 30px;
+    height: auto;
+`
 const ContainerTitle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+    flex-direction: row;
     bottom: 10px;
     width: 100%;
     z-index: 2;
+    gap: 10px;
 `
 const TitleCard = styled.h3`
     font-size: 20px;
@@ -67,18 +74,20 @@ export const Dashboard = () => {
     const [showModalCard, setShowModalCard] = useState(false);
     const [registros, setRegistros] = useState<any[]>([]);
     const [selectedRegister, setSelectedRegister] = useState<any | null>(null);
-    const [checkReq, setCheckReq] = useState(true);
+    // const [checkReq, setCheckReq] = useState(false);
 
     useEffect(()=> {
-        if (checkReq) {
-            getRegisters();
-            setCheckReq(false);
-        }
-    },[checkReq])
+        getRegisters();
+    },[])
+
+    // useEffect(() => {
+    //     if (checkReq) {
+    //     getRegisters();
+    //     setCheckReq(false);
+    //  }}, [checkReq]);
 
     const getRegisters = async () => {
         const token = localStorage.getItem('token')
-
         try {
             const response = await axios.get('http://localhost:8081/registers/all', {
                 headers: {
@@ -86,12 +95,35 @@ export const Dashboard = () => {
                 }
             })
             setRegistros(response.data)
-            setCheckReq(true)
-            console.log(registros)
+            console.log(response.data)
         }
         catch (err : any) {
             console.log(err);
             alert(err.response?.data?.message || 'Erro ao pegar todas as informações')
+        }
+    }
+    
+    const deleteRegister = async (registerId: number) => {
+        try {
+
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                throw new Error('Token ausente')
+            }
+
+            const response = await axios.delete(`http://localhost:8081/registers/delete/${registerId}`, {
+               headers: {
+                    Authorization:  `Bearer ${token}`
+                }
+            });
+
+            console.log(response)
+            getRegisters();
+        }
+        catch (err : any) {
+           console.log(err);
+            alert(err.response?.data?.message || 'Erro ao deletar card')
         }
     }
     
@@ -106,6 +138,9 @@ export const Dashboard = () => {
                 <Url src={registros.iconUrl || "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"}/>
                 <ContainerTitle>
                     <TitleCard>{registros.dominio}</TitleCard>
+                    <Trash src="assets/icon/trash.png" key={registros.id} onClick={
+                        (e) => {e.stopPropagation();
+                        deleteRegister(registros.id); }}/>
                 </ContainerTitle>
             </ContainerCard>
         ))}
@@ -115,7 +150,7 @@ export const Dashboard = () => {
             <TextAdd>Novo Login</TextAdd>
         </ContainerAddLogin>
 
-        {showModal && <ModalRegister onClose={() => setShowModal(false)} />}
+        {showModal && <ModalRegister onClose={() => setShowModal(false)} onRegisterSuccess={() => { getRegisters(); }} />}
         {showModalCard && selectedRegister && (
             <ModalCard onClose={() => setShowModalCard(false)} 
             register={selectedRegister} />

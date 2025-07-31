@@ -3,11 +3,12 @@ import { ModalForm } from "./modalForm"
 
 interface ModalRegisterProps{
      onClose: () => void
+     onRegisterSuccess: () => void
 }
-export const ModalRegister: React.FC<ModalRegisterProps> = ({onClose} ) => {
+export const ModalRegister: React.FC<ModalRegisterProps> = ({onClose, onRegisterSuccess} ) => {
     return (
        <Modal onClose={onClose}>
-            <ModalForm />
+            <ModalForm onRegisterSuccess={onRegisterSuccess} />
        </Modal>
     )
 }
