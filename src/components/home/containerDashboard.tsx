@@ -98,14 +98,14 @@ export const Dashboard = () => {
     return (
     <ContainerMaster>
         
-        {registros.map((registros) => (
-            <ContainerCard key={registros.id} onClick={() => {
+        {registros.map((registro) => (
+            <ContainerCard key={registro.id} onClick={() => {
                 setShowModalCard(true)
-                setSelectedRegister(registros);
+                setSelectedRegister(registro);
              }}>
-                <Url src={registros.iconUrl || "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"}/>
+                <Url src={registro.iconUrl || "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"}/>
                 <ContainerTitle>
-                    <TitleCard>{registros.dominio}</TitleCard>
+                    <TitleCard>{registro.dominio}</TitleCard>
                 </ContainerTitle>
             </ContainerCard>
         ))}
