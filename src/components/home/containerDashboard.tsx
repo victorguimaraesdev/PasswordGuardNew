@@ -74,17 +74,12 @@ export const Dashboard = () => {
     const [showModalCard, setShowModalCard] = useState(false);
     const [registros, setRegistros] = useState<any[]>([]);
     const [selectedRegister, setSelectedRegister] = useState<any | null>(null);
-    // const [checkReq, setCheckReq] = useState(false);
+
 
     useEffect(()=> {
         getRegisters();
     },[])
 
-    // useEffect(() => {
-    //     if (checkReq) {
-    //     getRegisters();
-    //     setCheckReq(false);
-    //  }}, [checkReq]);
 
     const getRegisters = async () => {
         const token = localStorage.getItem('token')
@@ -137,10 +132,10 @@ export const Dashboard = () => {
              }}>
                 <Url src={registro.iconUrl || "https://play-lh.googleusercontent.com/1-hPxafOxdYpYZEOKzNIkSP43HXCNftVJVttoo4ucl7rsMASXW3Xr6GlXURCubE1tA=w3840-h2160-rw"}/>
                 <ContainerTitle>
-                    <TitleCard>{registros.dominio}</TitleCard>
-                    <Trash src="assets/icon/trash.png" key={registros.id} onClick={
+                    <TitleCard>{registro.dominio}</TitleCard>
+                    <Trash src="assets/icon/trash.png" key={registro.id} onClick={
                         (e) => {e.stopPropagation();
-                        deleteRegister(registros.id); }}/>
+                        deleteRegister(registro.id); }}/>
                 </ContainerTitle>
             </ContainerCard>
         ))}
