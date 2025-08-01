@@ -8,7 +8,7 @@ interface ModalRegisterProps{
 export const ModalRegister: React.FC<ModalRegisterProps> = ({onClose, onRegisterSuccess} ) => {
     return (
        <Modal onClose={onClose}>
-            <ModalForm onRegisterSuccess={onRegisterSuccess} />
+            <ModalForm onRegisterSuccess={onRegisterSuccess} onClose={onClose} />
        </Modal>
     )
 }

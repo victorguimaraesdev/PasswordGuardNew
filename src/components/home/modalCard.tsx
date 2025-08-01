@@ -9,7 +9,8 @@ const ContainerForm = styled.div `
     padding: 20px;
     width: 100%;
     height: 100%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Inter", sans-serif;
+    font-weight: 200;
 `
 const SubContainerForm = styled.div`
     display: flex;
@@ -21,12 +22,16 @@ const SubContainerForm = styled.div`
     gap: 5px;
 `
 const Login = styled.h3`
-     font-size: 20px;
+    font-size: 20px;
     color: var(--secondary);
+    font-family: "Inter", sans-serif;
+    font-weight: 200;
 `
 const Password = styled.h3`
      font-size: 20px;
     color: var(--secondary);
+    font-family: "Inter", sans-serif;
+    font-weight: 200;
 `
 const ImgLogin = styled.img`
     width: 60px;

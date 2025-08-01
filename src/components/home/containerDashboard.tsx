@@ -7,7 +7,6 @@ import axios from "axios";
 const ContainerMaster = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     padding: 20px;
     width: 100%;
     height: 100vh;
@@ -21,19 +20,20 @@ const ContainerAddLogin = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 150px;
-    width: 150px;
+    height: 120px;
+    width: 120px;
     box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 `
 const IconAdd = styled.img`
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
 `
 const TextAdd = styled.h3`
     font-size: 15px;
     color: var(--primary);
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
 `
 const ContainerCard = styled.div`
     display: flex;
@@ -44,7 +44,7 @@ const ContainerCard = styled.div`
     cursor: pointer;
 `
 const Trash = styled.img`
-    width: 30px;
+    width: 25px;
     height: auto;
 `
 const ContainerTitle = styled.div`
@@ -60,7 +60,8 @@ const ContainerTitle = styled.div`
 `
 const TitleCard = styled.h3`
     font-size: 20px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
     color: var(--primary);
     z-index: 2;
 `

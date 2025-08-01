@@ -54,9 +54,10 @@ const FormRegister = styled.form`
 
 interface ModalFormProps {
     onRegisterSuccess: () => void
+    onClose: () => void
 }
 
-export const ModalForm: React.FC<ModalFormProps> = ({ onRegisterSuccess }) => {
+export const ModalForm: React.FC<ModalFormProps> = ({ onRegisterSuccess, onClose }) => {
     const [dominio, setDominio] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
@@ -88,6 +89,7 @@ export const ModalForm: React.FC<ModalFormProps> = ({ onRegisterSuccess }) => {
 
             console.log(response)
             onRegisterSuccess();
+            onClose();
         }
         catch(err : any) {
                 console.log(err)
