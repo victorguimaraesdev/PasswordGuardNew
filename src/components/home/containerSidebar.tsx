@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const ContainerMaster = styled.div`
@@ -7,6 +9,7 @@ const ContainerMaster = styled.div`
     padding: 15px 0px 0px 0px;
     height: 100vh;
     width: 350px;
+    gap: 10px;
     background-color: var(--primary);
     border-right: 2px solid white;
     `
@@ -22,11 +25,13 @@ const ContainerLogo = styled.div`
 const ContainerOption = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     width: 100%;
-    height: 400px;
+    height: 200px;
     margin-top: 20px;
-    gap: 10px;
+    gap: 12px;
+    /* background-color: red */
     `
 const SubContainerOption = styled.div`
     display: flex;
@@ -87,6 +92,7 @@ const SubContainerLogout = styled.div`
     gap: 8px;   
     box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
+    cursor: pointer;
     `
 const IconLogout = styled.img`
     width: 25px;
@@ -98,14 +104,57 @@ const TextLogout = styled.h3`
     font-family: "Inter", sans-serif;
     font-weight: 500;
     `
+const IconAvatar = styled.img`
+    width: 65px;
+    height: auto;
+    `
+const ContainerAvatar = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+    border: 2px solid white;
+`
+
 
 export const SideBar = () => {
+
+    const [userInfo, setUserInfo] = useState<any>({});
+
+    const FunctionLogout = () => {
+        localStorage.clear()
+        window.location.reload()
+    }
+    useEffect(() => {
+        getUserInfo();
+    }, [])
+
+    const getUserInfo = async () => {
+
+        const token = localStorage.getItem('token')
+
+        const response = await axios.get('http://localhost:8081/users/me', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        setUserInfo(response.data)
+        console.log(response.data)
+    }
+
     return (
         <ContainerMaster>
           <ContainerLogo>
             <ImgLogo src="../../assets/logo/logo.png"></ImgLogo>
             <TextLogo>Password Guard</TextLogo>
           </ContainerLogo>
+          <ContainerAvatar>
+            <IconAvatar src="../../assets/icon/login.png"></IconAvatar>
+          </ContainerAvatar>
+          <TextOption>Nome: {userInfo.usuario?.name}</TextOption>
+          <TextOption>Email: {userInfo.usuario?.email}</TextOption>
           <ContainerOption>
             <SubContainerOption>
                 <InsideOption>
@@ -127,7 +176,7 @@ export const SideBar = () => {
             </SubContainerOption>
           </ContainerOption>
           <ContainerLogout>
-            <SubContainerLogout>
+            <SubContainerLogout onClick={FunctionLogout}>
                 <IconLogout src="../../assets/icon/logout.png"/>
                 <TextLogout>Sair</TextLogout>
             </SubContainerLogout>

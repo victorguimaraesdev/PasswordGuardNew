@@ -11,8 +11,9 @@ const ContainerMaster = styled.div`
     width: 100%;
     height: 100vh;
     gap: 10px;
-    background-color: #fcfcfc;
+    background-color: #dbe4fc;
     overflow-y: auto;
+    z-index: 0;
     
 `
 const ContainerAddLogin = styled.div`
@@ -24,10 +25,13 @@ const ContainerAddLogin = styled.div`
     width: 120px;
     box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    z-index: 10;
+    background-color: white;
 `
 const IconAdd = styled.img`
     height: 60px;
     width: 60px;
+    z-index: 10;
 `
 const TextAdd = styled.h3`
     font-size: 15px;
@@ -37,7 +41,7 @@ const TextAdd = styled.h3`
 `
 const ContainerCard = styled.div`
     display: flex;
-    width: 350px;
+    width: 330px;
     height: 200px;
     position: relative;
     box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
