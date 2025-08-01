@@ -8,7 +8,7 @@ const ContainerMaster = styled.div`
     flex-direction: column;
     padding: 15px 0px 0px 0px;
     height: 100vh;
-    width: 350px;
+    width: 450px;
     gap: 10px;
     background-color: var(--primary);
     border-right: 2px solid white;
@@ -37,7 +37,7 @@ const SubContainerOption = styled.div`
     align-items: center;
     justify-content: center;
     height: 35px;
-    width: 150px;
+    width: 250px;
     color: var(--secondary);
     cursor: pointer;
     box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
@@ -47,6 +47,7 @@ const SubContainerOption = styled.div`
 const InsideOption = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: row;
     width: 75%;
     height: 100%;  

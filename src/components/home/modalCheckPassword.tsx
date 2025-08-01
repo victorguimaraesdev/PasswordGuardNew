@@ -3,6 +3,16 @@ import { Modal } from "../../utils/modal"
 import styled from "styled-components"
 import axios from "axios"
 
+const ContainerForm = styled.div `
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+`
 const SubContainerLogin = styled.div`
     display: flex;
     justify-content: center;
@@ -18,13 +28,14 @@ const Input = styled.input`
     width: 50%;
     height: 30px;
     border: none;
-    color: var(--primary);
+    color: var(--secondary);
     font-size: 15px;
-    border-bottom: 1px solid var(--primary);
+    border-bottom: 1px solid var(--secondary);
     box-shadow: none;
+    background-color: transparent;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
      &::placeholder {
-        color: var(--primary);
+        color: var(--secondary);
         font-size: 15px;
     }
 `
@@ -33,6 +44,11 @@ const IconInput  = styled.img`
     height: auto;
 `
 const FormSubmite = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
 `
 const LoginButton = styled.button`
@@ -44,6 +60,10 @@ const LoginButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.2);
+`
+const Img = styled.img`
+    width: 100px;
+    height: auto;
 `
 
 interface ModalCheckPasswordProps {
@@ -70,8 +90,8 @@ export const ModalCheckPassword:React.FC<ModalCheckPasswordProps> = ({onClose, s
             }
         })
             console.log(response.data)
-            console.log(response)
             setCheckPassword(response.data)
+            onClose();
         }
         catch (err : any) {
             console.log(err);
@@ -81,13 +101,16 @@ export const ModalCheckPassword:React.FC<ModalCheckPasswordProps> = ({onClose, s
 
     return (
         <Modal onClose={onClose}>
+            <ContainerForm>
             <FormSubmite onSubmit={handleSubmit}>
-            <SubContainerLogin>
-                <IconInput src="../../assets/icon/password.png"></IconInput>
-                <Input placeholder="Senha:" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            </SubContainerLogin>
-            <LoginButton type="submit">Confirmar senha</LoginButton>
+                    <Img src="assets/icon/cyber.png"/>
+                <SubContainerLogin>
+                    <IconInput src="../../assets/icon/padlock.png"></IconInput>
+                    <Input placeholder="Senha:" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                </SubContainerLogin>
+                <LoginButton type="submit">Confirmar senha</LoginButton>
             </FormSubmite>
+            </ContainerForm>
         </Modal>
     )
 }
