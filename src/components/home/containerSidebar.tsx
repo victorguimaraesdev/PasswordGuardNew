@@ -31,7 +31,6 @@ const ContainerOption = styled.div`
     height: 200px;
     margin-top: 20px;
     gap: 12px;
-    /* background-color: red */
     `
 const SubContainerOption = styled.div`
     display: flex;
