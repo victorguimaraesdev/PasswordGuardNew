@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ModalRegister } from "./modalRegister";
 import { ModalCard } from "./modalCard";
 import axios from "axios";
+import { ModalCheckPassword } from "./modalCheckPassword";
 
 const ContainerMaster = styled.div`
     display: flex;
@@ -79,8 +80,8 @@ export const Dashboard = () => {
     const [showModalCard, setShowModalCard] = useState(false);
     const [registros, setRegistros] = useState<any[]>([]);
     const [selectedRegister, setSelectedRegister] = useState<any | null>(null);
-
-
+    const [checkPassword, setCheckPassword] = useState(false)
+    const [showModalCheckPassword, setShowModalCheckPassword] = useState(false);
     useEffect(()=> {
         getRegisters();
     },[])
@@ -132,6 +133,7 @@ export const Dashboard = () => {
         
         {registros.map((registro) => (
             <ContainerCard key={registro.id} onClick={() => {
+                setShowModalCheckPassword(true)
                 setShowModalCard(true)
                 setSelectedRegister(registro);
              }}>
@@ -151,7 +153,8 @@ export const Dashboard = () => {
         </ContainerAddLogin>
 
         {showModal && <ModalRegister onClose={() => setShowModal(false)} onRegisterSuccess={() => { getRegisters(); }} />}
-        {showModalCard && selectedRegister && (
+        {showModalCheckPassword && <ModalCheckPassword onClose={() => setShowModalCheckPassword(false)} setCheckPassword={setCheckPassword}/>}
+        {showModalCard && selectedRegister && checkPassword &&(
             <ModalCard onClose={() => setShowModalCard(false)} 
             register={selectedRegister} />
     )}
