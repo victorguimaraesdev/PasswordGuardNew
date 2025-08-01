@@ -155,7 +155,10 @@ export const Dashboard = () => {
         {showModal && <ModalRegister onClose={() => setShowModal(false)} onRegisterSuccess={() => { getRegisters(); }} />}
         {showModalCheckPassword && <ModalCheckPassword onClose={() => setShowModalCheckPassword(false)} setCheckPassword={setCheckPassword}/>}
         {showModalCard && selectedRegister && checkPassword &&(
-            <ModalCard onClose={() => setShowModalCard(false)} 
+            <ModalCard onClose={() => {
+                setShowModalCard(false);
+                setCheckPassword(false);
+            }}
             register={selectedRegister} />
     )}
 
