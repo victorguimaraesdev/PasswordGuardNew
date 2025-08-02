@@ -74,7 +74,7 @@ export const ModalFormLoginRegister: React.FC<ModalFormLoginRegisterProps> = ({o
         }
 
         try {
-            const response = await axios.post('http://localhost:8081/users/reg', {
+            const response = await axios.post('passwordguardnew-backend-production.up.railway.app/users/reg', {
                 name,
                 email,
                 password
