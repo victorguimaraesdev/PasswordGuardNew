@@ -75,7 +75,7 @@ export const ModalForm: React.FC<ModalFormProps> = ({ onRegisterSuccess, onClose
 
             const token = localStorage.getItem('token')
 
-            const response = await axios.post('http://localhost:8081/registers/new', {
+            const response = await axios.post('https://passwordguardnew-backend-production.up.railway.app/registers/new', {
                 dominio,
                 email,
                 password,

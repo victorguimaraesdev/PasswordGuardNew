@@ -90,7 +90,7 @@ export const Dashboard = () => {
     const getRegisters = async () => {
         const token = localStorage.getItem('token')
         try {
-            const response = await axios.get('http://localhost:8081/registers/all', {
+            const response = await axios.get('https://passwordguardnew-backend-production.up.railway.app/registers/all', {
                 headers: {
                     Authorization:  `Bearer ${token}`
                 }
@@ -113,7 +113,7 @@ export const Dashboard = () => {
                 throw new Error('Token ausente')
             }
 
-            const response = await axios.delete(`http://localhost:8081/registers/delete/${registerId}`, {
+            const response = await axios.delete(`https://passwordguardnew-backend-production.up.railway.app/registers/delete/${registerId}`, {
                headers: {
                     Authorization:  `Bearer ${token}`
                 }

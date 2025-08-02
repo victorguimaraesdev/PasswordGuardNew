@@ -81,7 +81,7 @@ export const ModalCheckPassword:React.FC<ModalCheckPasswordProps> = ({onClose, s
         const token = localStorage.getItem('token')
 
         try {
-            const response = await axios.post('http://localhost:8081/users/check', {
+            const response = await axios.post('https://passwordguardnew-backend-production.up.railway.app/users/check', {
                 password
             },
         {

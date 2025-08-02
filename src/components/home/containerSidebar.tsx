@@ -135,7 +135,7 @@ export const SideBar = () => {
 
         const token = localStorage.getItem('token')
 
-        const response = await axios.get('http://localhost:8081/users/me', {
+        const response = await axios.get('https://passwordguardnew-backend-production.up.railway.app/users/me', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
