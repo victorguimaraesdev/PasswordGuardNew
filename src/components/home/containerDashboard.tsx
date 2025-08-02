@@ -148,7 +148,7 @@ export const Dashboard = () => {
         ))}
 
         <ContainerAddLogin onClick={() => setShowModal(true)}>
-             <IconAdd src="../../assets/icon/add.png" />
+             <IconAdd src="assets/icon/add.png" />
             <TextAdd>Novo Login</TextAdd>
         </ContainerAddLogin>
 

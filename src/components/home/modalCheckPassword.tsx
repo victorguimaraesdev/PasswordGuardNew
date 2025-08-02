@@ -103,9 +103,9 @@ export const ModalCheckPassword:React.FC<ModalCheckPasswordProps> = ({onClose, s
         <Modal onClose={onClose}>
             <ContainerForm>
             <FormSubmite onSubmit={handleSubmit}>
-                    <Img src="assets/icon/cyber.png"/>
+                    <Img src="/assets/icon/cyber.png"/>
                 <SubContainerLogin>
-                    <IconInput src="../../assets/icon/padlock.png"></IconInput>
+                    <IconInput src="/assets/icon/padlock.png"></IconInput>
                     <Input placeholder="Senha:" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </SubContainerLogin>
                 <LoginButton type="submit">Confirmar senha</LoginButton>

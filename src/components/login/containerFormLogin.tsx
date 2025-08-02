@@ -107,14 +107,14 @@ export const ContainerFormLogin = () => {
 
     return (
         <ContainerFormLoginMaster>
-           <ImgLogo src="../../assets/logo/logo.png"></ImgLogo>
+           <ImgLogo src="assets/logo/logo.png"></ImgLogo>
            <FormSubmite onSubmit={handleSubmit}>
             <SubContainerLogin>
-                <IconInput src="../../assets/icon/email.png"></IconInput>
+                <IconInput src="assets/icon/email.png"></IconInput>
                 <Input placeholder="E-mail:" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </SubContainerLogin>
             <SubContainerLogin>
-                <IconInput src="../../assets/icon/password.png"></IconInput>
+                <IconInput src="assets/icon/password.png"></IconInput>
                 <Input placeholder="Senha:" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </SubContainerLogin>
             <SubContainerButton>

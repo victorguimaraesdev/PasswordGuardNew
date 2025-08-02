@@ -147,37 +147,37 @@ export const SideBar = () => {
     return (
         <ContainerMaster>
           <ContainerLogo>
-            <ImgLogo src="../../assets/logo/logo.png"></ImgLogo>
+            <ImgLogo src="/assets/logo/logo.png"></ImgLogo>
             <TextLogo>Password Guard</TextLogo>
           </ContainerLogo>
           <ContainerAvatar>
-            <IconAvatar src="../../assets/icon/login.png"></IconAvatar>
+            <IconAvatar src="/assets/icon/login.png"></IconAvatar>
           </ContainerAvatar>
           <TextOption>Nome: {userInfo.usuario?.name}</TextOption>
           <TextOption>Email: {userInfo.usuario?.email}</TextOption>
           <ContainerOption>
             <SubContainerOption>
                 <InsideOption>
-                    <IconOption src="../../assets/icon/padlock.png"/>
+                    <IconOption src="/assets/icon/padlock.png"/>
                     <TextOption>Login</TextOption>
                 </InsideOption>
             </SubContainerOption>
              <SubContainerOption>
                 <InsideOption>
-                    <IconOption src="../../assets/icon/key.png"/>
+                    <IconOption src="/assets/icon/key.png"/>
                     <TextOption>Chaves</TextOption>
                 </InsideOption>
             </SubContainerOption>
              <SubContainerOption>
                 <InsideOption>
-                    <IconOption src="../../assets/icon/red.png"/>
+                    <IconOption src="/assets/icon/red.png"/>
                     <TextOption>Plano</TextOption>
                 </InsideOption>
             </SubContainerOption>
           </ContainerOption>
           <ContainerLogout>
             <SubContainerLogout onClick={FunctionLogout}>
-                <IconLogout src="../../assets/icon/logout.png"/>
+                <IconLogout src="/assets/icon/logout.png"/>
                 <TextLogout>Sair</TextLogout>
             </SubContainerLogout>
           </ContainerLogout>

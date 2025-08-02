@@ -55,7 +55,7 @@ export const ContainerLogin = () => {
             </SubContainerLogin>
             <SubContainerExtra>
                 <SubContainerBanner>
-               <Img src="assets/icon/cyber.png"/>
+               <Img src="public/assets/icon/cyber.png"/>
                <Text>Seu app de cybersegurança!</Text>
                 </SubContainerBanner>
             </SubContainerExtra>

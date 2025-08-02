@@ -46,7 +46,7 @@ export const ModalCard: React.FC<ModalRegisterProps> = ({onClose, register} ) =>
     return (
        <Modal onClose={onClose}>
           <ContainerForm>
-               <ImgLogin src="assets/icon/login.png" />
+               <ImgLogin src="/assets/icon/login.png" />
                <SubContainerForm>
                     <Login>Login: {register.email}</Login>
                      <Password>Passoword: {register.password}</Password>
