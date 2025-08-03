@@ -92,7 +92,7 @@ export const ModalCheckPassword:React.FC<ModalCheckPasswordProps> = ({onClose, s
             }
         })
             console.log(response.data)
-            setCheckPassword(response.data)
+            setCheckPassword(response.data.password)
             onClose();
         }
         catch (err : any) {
