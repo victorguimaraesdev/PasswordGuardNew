@@ -80,7 +80,7 @@ export const Dashboard = () => {
     const [showModalCard, setShowModalCard] = useState(false);
     const [registros, setRegistros] = useState<any[]>([]);
     const [selectedRegister, setSelectedRegister] = useState<any | null>(null);
-    const [checkPassword, setCheckPassword] = useState(false)
+    const [checkPassword, setCheckPassword] = useState('')
     const [showModalCheckPassword, setShowModalCheckPassword] = useState(false);
     useEffect(()=> {
         getRegisters();
@@ -153,15 +153,16 @@ export const Dashboard = () => {
         </ContainerAddLogin>
 
         {showModal && <ModalRegister onClose={() => setShowModal(false)} onRegisterSuccess={() => { getRegisters(); }} />}
-        {showModalCheckPassword && <ModalCheckPassword onClose={() => setShowModalCheckPassword(false)} setCheckPassword={setCheckPassword}/>}
+        {showModalCheckPassword && <ModalCheckPassword  registerId={selectedRegister.id} onClose={() => setShowModalCheckPassword(false)} setCheckPassword={setCheckPassword}/>}
         {showModalCard && selectedRegister && checkPassword &&(
             <ModalCard onClose={() => {
                 setShowModalCard(false);
-                setCheckPassword(false);
+                setCheckPassword('');
             }}
-            register={selectedRegister} />
+            register={selectedRegister} 
+            password={checkPassword}
+            />
     )}
-
     </ContainerMaster>
     )
 }

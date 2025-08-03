@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { Modal } from "../../utils/modal"
 import styled from "styled-components"
 import axios from "axios"
@@ -68,10 +68,11 @@ const Img = styled.img`
 
 interface ModalCheckPasswordProps {
     onClose: () => void
-    setCheckPassword: React.Dispatch<React.SetStateAction<boolean>>
+    setCheckPassword: React.Dispatch<React.SetStateAction<string>>
+    registerId: string
 }
 
-export const ModalCheckPassword:React.FC<ModalCheckPasswordProps> = ({onClose, setCheckPassword}) => {
+export const ModalCheckPassword:React.FC<ModalCheckPasswordProps> = ({onClose, setCheckPassword, registerId}) => {
     const [password, setPassword] = useState('')
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -82,7 +83,8 @@ export const ModalCheckPassword:React.FC<ModalCheckPasswordProps> = ({onClose, s
 
         try {
             const response = await axios.post('https://passwordguardnew-backend-production.up.railway.app/users/check', {
-                password
+                password,
+                registerId
             },
         {
             headers: {

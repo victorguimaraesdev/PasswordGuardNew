@@ -41,15 +41,16 @@ const ImgLogin = styled.img`
 interface ModalRegisterProps{
      onClose: () => void
      register: any
+     password: string
 }
-export const ModalCard: React.FC<ModalRegisterProps> = ({onClose, register} ) => {
+export const ModalCard: React.FC<ModalRegisterProps> = ({onClose, register, password} ) => {
     return (
        <Modal onClose={onClose}>
           <ContainerForm>
                <ImgLogin src="/assets/icon/login.png" />
                <SubContainerForm>
                     <Login>Login: {register.email}</Login>
-                     <Password>Passoword: {register.password}</Password>
+                     <Password>Passoword: {password}</Password>
                </SubContainerForm>
           </ContainerForm>
        </Modal>
