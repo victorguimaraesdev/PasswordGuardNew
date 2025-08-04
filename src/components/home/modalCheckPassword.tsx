@@ -91,7 +91,7 @@ export const ModalCheckPassword:React.FC<ModalCheckPasswordProps> = ({onClose, s
                 Authorization: ` Bearer ${token}`
             }
         })
-            console.log(response.data)
+            console.log(response.data.password)
             setCheckPassword(response.data.password)
             onClose();
         }
